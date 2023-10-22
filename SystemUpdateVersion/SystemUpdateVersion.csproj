@@ -75,6 +75,9 @@
       <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SimpleUpdater">
+      <HintPath>Lib\SimpleUpdater.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />

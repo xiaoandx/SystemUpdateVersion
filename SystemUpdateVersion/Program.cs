@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FSLib.App.SimpleUpdater;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace SystemUpdateVersion
             {
                 if (isCreateApp)
                 {
+                    //检查版本
+                    FSLib.App.SimpleUpdater.Updater.CheckUpdateSimple("http://127.0.0.1:8080/{0}", "update.xml");
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new Main());
