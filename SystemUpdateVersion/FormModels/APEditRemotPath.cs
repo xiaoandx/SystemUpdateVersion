@@ -80,6 +80,7 @@ namespace SystemUpdateVersion.FormModels
             else
             {
                 MessageHelper.Error("选择AP为空，重新选择！");
+                this.Dispose();
                 this.Close();
             }
         }
@@ -114,6 +115,7 @@ namespace SystemUpdateVersion.FormModels
             }
             
             this.Close();
+            this.Dispose();
         }
 
         private void textBAPFilesPath_TextChanged(object sender, EventArgs e)

@@ -100,6 +100,12 @@
     <Compile Include="FormModels\APEditRemotPath.Designer.cs">
       <DependentUpon>APEditRemotPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormModels\Hidden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModels\Hidden.Designer.cs">
+      <DependentUpon>Hidden.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormModels\UpdateAPConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <Compile Include="Hepler\MdbHepler.cs" />
     <EmbeddedResource Include="FormModels\APEditRemotPath.resx">
       <DependentUpon>APEditRemotPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModels\Hidden.resx">
+      <DependentUpon>Hidden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormModels\UpdateAPConfig.resx">
       <DependentUpon>UpdateAPConfig.cs</DependentUpon>

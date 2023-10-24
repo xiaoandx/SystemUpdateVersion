@@ -59,6 +59,9 @@ namespace SystemUpdateVersion
         string CIMPDAMonitorPath = string.Empty;
         string CamPortalMonitorPath = string.Empty;
 
+        //最小化
+        Hidden hidden;
+
         public Main()
         {
             InitializeComponent();
@@ -133,6 +136,8 @@ namespace SystemUpdateVersion
         {
             //LogHepler.WriterLog($"==================================== {Factory} 更版结束 ======================================", "");
             LogHepler.WriterLog($"==================================== {CSL.Get(CSLE.R_Log_UpdateEnd, Factory)} ======================================", "");
+            if(hidden != null) hidden.Dispose();
+            this.Dispose();
             Application.Exit();
         }
 
@@ -234,9 +239,10 @@ namespace SystemUpdateVersion
         private void butSelectFolder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog path = new FolderBrowserDialog();
+            path.SelectedPath = ReadINI("DefalutConfig", "DefalutSelectPath");
             path.ShowDialog();
             tBFolderPath.Text = path.SelectedPath;
-
+            WriteINI("DefalutConfig", "DefalutSelectPath", path.SelectedPath);
             butSelectFiles.Enabled = true;
         }
 
@@ -390,7 +396,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.Upload);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "更版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
                                 }
 
                             }
@@ -413,7 +419,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.Upload);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "更版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}{ex.Message}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
                                 }
                             }
                         }
@@ -472,7 +478,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.Upload);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "更版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
                                 }
 
                             }
@@ -495,7 +501,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.Upload);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "更版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_UpdateVersionStatus));
                                 }
                             }
                         }
@@ -618,7 +624,7 @@ namespace SystemUpdateVersion
                                 //DeleteFile(_LocaFilepath); -去掉
                                 FTPResStatusPush(item.IP, _LocaFilepath, false, FTPType.BackupVersion);
                                 //LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", "备份状态");
-                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", CSL.Get(CSLE.R_L_BackupStatus));
+                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackupStatus));
                             }
                         }
                     }
@@ -643,7 +649,7 @@ namespace SystemUpdateVersion
                             {
                                 FTPResStatusPush(item.IP, _LocaFilepath, false, FTPType.BackupVersion);
                                 //LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", "备份状态");
-                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", CSL.Get(CSLE.R_L_BackupStatus));
+                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackupStatus));
                             }
                         }
                     }
@@ -697,7 +703,7 @@ namespace SystemUpdateVersion
                                 //DeleteFile(_LocaFilepath);
                                 FTPResStatusPush(item.IP, _LocaFilepath, false, FTPType.BackupVersion);
                                 //LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", "备份状态");
-                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", CSL.Get(CSLE.R_L_BackupStatus));
+                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackupStatus));
                             }
                         }
                     }
@@ -722,7 +728,7 @@ namespace SystemUpdateVersion
                             {
                                 FTPResStatusPush(item.IP, _LocaFilepath, false, FTPType.BackupVersion);
                                 //LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", "备份状态");
-                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false}", CSL.Get(CSLE.R_L_BackupStatus));
+                                LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackupStatus));
                             }
                         }
                     }
@@ -822,7 +828,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.BackVersion);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "退版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_BackStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackStatus));
                                 }
                             }
                         }
@@ -844,7 +850,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.BackVersion);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "退版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_BackStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackStatus));
                                 }
                             }
                         }
@@ -900,7 +906,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.BackVersion);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "退版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_BackStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackStatus));
                                 }
                             }
                         }
@@ -922,7 +928,7 @@ namespace SystemUpdateVersion
                                 {
                                     FTPResStatusPush(item.IP, new FileInfo(_filepath).Name, false, FTPType.BackVersion);
                                     //LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", "退版状态");
-                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false}", CSL.Get(CSLE.R_L_BackStatus));
+                                    LogHepler.WriterLog(OperationUserName, $"{item.IP} {new FileInfo(_filepath).Name} {false} {ex.Message}", CSL.Get(CSLE.R_L_BackStatus));
                                 }
                             }
                         }
@@ -1152,7 +1158,11 @@ namespace SystemUpdateVersion
             {
                 if (this.WindowState == FormWindowState.Minimized)
                 {
+                    this.ShowInTaskbar = false;
                     notifyIcon1.Visible = true;
+                    hidden = new Hidden();
+                    hidden.Show();
+                    this.Hide();
                 }
             }
             else
@@ -1163,7 +1173,10 @@ namespace SystemUpdateVersion
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
+            this.Show();
             this.WindowState = FormWindowState.Normal;
+            if (hidden != null)
+                hidden.Hide();
             notifyIcon1.Visible = false;
         }
 
@@ -1529,6 +1542,9 @@ namespace SystemUpdateVersion
                 _TypeAPConfigList = DtToList(dt);
             }
 
+            //修改时间清空
+            textBChangeDateTime.Clear();
+
             //数据回显
             foreach (APConfigModel item in _TypeAPConfigList)
             {             
@@ -1541,9 +1557,27 @@ namespace SystemUpdateVersion
                 else
                 {
                     cLBAPS.Items.Add(item.IP);
+                    GetChangeDateTime(item);
                 }
             }
 
+        }
+
+        private void GetChangeDateTime(APConfigModel item)
+        {
+            try
+            {
+                FTPHepler ftp = new FTPHepler(item.IP, item.Port, item.Path + item.ProjectFolderPath, item.FTPUserName, item.FTPPassWord);
+                string ChangeDateTime = ftp.ChangeDateTime();
+                if (!string.IsNullOrEmpty(ChangeDateTime))
+                {
+                    textBChangeDateTime.AppendText($"{item.IP}" + "\t" + ChangeDateTime + "\r\n");
+                }
+            } 
+            catch (Exception ex)
+            {
+                return;
+            }
         }
 
         private List<APConfigModel> DtToList(DataTable dt)
@@ -1833,6 +1867,9 @@ namespace SystemUpdateVersion
                 LogHepler.WriterLog(CSL.Get(CSLE.A_M_Login_LoginOK, textBUserName.Text), CSL.Get(CSLE.A_M_Login_UserNameLogFun));
                 tabCMain.SelectedIndex = 1;
                 tabPAuthentication.Parent = null;
+                //登录用户信息持久化
+                WriteINI("AccountInformation","UserName", OperationUserName);
+                WriteINI("AccountInformation", "Factory", Factory);
                 return;
             }
             else
@@ -2273,6 +2310,30 @@ namespace SystemUpdateVersion
             Type listViewLog = liVFTPRes.GetType();
             PropertyInfo pi = listViewLog.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(liVFTPRes, true);
+        }
+
+        //默认记录上次选的更版目录
+
+        /// <summary>
+        /// 读取Ini配置
+        /// </summary>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <returns>Value</returns>
+        private string ReadINI(string section, string key)
+        {
+            return INIHelper.ReadIni(section, key, "", 255, Environment.CurrentDirectory + @"/Config.ini");
+        }
+
+        /// <summary>
+        /// 保存Ini配置
+        /// </summary>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <param name="value">value</param>
+        private void WriteINI(string section, string key, string value)
+        {
+            INIHelper.WriteIni(section, key, value, Environment.CurrentDirectory + @"/Config.ini");
         }
     }
 }

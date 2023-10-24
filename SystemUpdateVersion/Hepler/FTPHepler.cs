@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
+using SystemUpdateVersion.Models;
 
 namespace SystemUpdateVersion.Hepler
 {
@@ -56,6 +58,7 @@ namespace SystemUpdateVersion.Hepler
             FileInfo fileInfo = new FileInfo(FileName);
             string uri = ftpURI + fileInfo.Name;
             FtpWebRequest reqFTP;
+            LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"File:{FileName} FTPFileInfo:{uri}", CSL.Get(CSLE.A_FTP_UploadFile));
 
             reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
             reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -96,6 +99,7 @@ namespace SystemUpdateVersion.Hepler
             FileInfo fileInfo = new FileInfo(FileName);
             string uri = ftpURI + RemotePath + "/" + fileInfo.Name;
             FtpWebRequest reqFTP;
+            LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"File:{FileName} FTPFileInfo:{uri}", CSL.Get(CSLE.A_FTP_UploadFile));
 
             reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
             reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -157,8 +161,12 @@ namespace SystemUpdateVersion.Hepler
                 }
 
                 FileStream outputStream = new FileStream(LocalSavePath, FileMode.Create);
+
+                string _downloadURL = @"ftp://" + ftpServerIP + ":" + ftpServerPort + "/" + ftpRemotePath + "/" + FileName;
+                LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"File:{FileName}{LocalSavePath} FTPFileInfo:" + _downloadURL, CSL.Get(CSLE.A_FTP_DownloadFile));
+
                 //reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://" + ftpUserID + ":" + ftpPassword + "@" + ftpServerIP + "/" + FileName));
-                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(@"ftp://" + ftpServerIP + ":"+ ftpServerPort+"/" + ftpRemotePath + "/" + FileName));
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(_downloadURL));
                 reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
                 reqFTP.UseBinary = true;
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
@@ -495,6 +503,111 @@ namespace SystemUpdateVersion.Hepler
                 ftpRemotePath += DirectoryName + "/";
             }
             ftpURI = "ftp://" + ftpServerIP + "/" + ftpRemotePath + "/";
+        }
+
+        /// <summary>
+        /// 获取FTP远程指定目录下最新的修改时间
+        /// </summary>
+        /// <param name="directory">目录</param>
+        /// <returns>最新的修改时间</returns>
+        /// <exception cref="Exception">FTP执行异常</exception>
+        public string ChangeDateTime(string directory = "/")
+        {
+            FtpWebRequest reqFTP;
+            try
+            {
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + directory));
+                reqFTP.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                reqFTP.UseBinary = true;
+                reqFTP.UsePassive = false;
+                reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                Stream ftpStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(ftpStream);
+                string latestFile = string.Empty;
+                DateTime latestFileChangeDateTime = DateTime.MinValue;
+
+                string line = reader.ReadLine();
+                while (line != null)
+                {
+                    string[] tokens = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string fileName = tokens[tokens.Length - 1];
+                    DateTime modifiedTime = DateTime.Parse(tokens[0] + " " + tokens[1]);
+
+                    if (fileName != "." && fileName != "..")
+                    {
+                        if (modifiedTime > latestFileChangeDateTime)
+                        {
+                            latestFileChangeDateTime = modifiedTime;
+                            latestFile = fileName;
+                        }
+                    }
+                    line = reader.ReadLine();
+                }
+                reader.Close();
+                ftpStream.Close();
+                response.Close();
+                LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"GetChangeDateTime:{ftpURI + directory} time:{latestFileChangeDateTime.ToShortDateString()}", CSL.Get(CSLE.A_FTP_GetLatestModificationTime));
+                return latestFileChangeDateTime.ToString();
+            } catch (Exception ex)
+            {
+                LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"GetChangeDateTimeError:{ftpURI + directory} Msg:{ex.Message}", CSL.Get(CSLE.A_FTP_GetLatestModificationTime));
+                throw new Exception("FtpHelper GetChangeDateTime Error --> " + ex.Message);
+            } 
+            finally
+            {
+            }
+        }
+
+        /// <summary>
+        /// 获取FTP远程指定目录下最新的修改时间
+        /// </summary>
+        /// <param name="directory">目录</param>
+        /// <returns>最新的修改时间</returns>
+        /// <exception cref="Exception">FTP执行异常</exception>
+        public string ChangeDateTimeNet(FtpWebRequest reqFTP)
+        {
+            try
+            {
+                reqFTP.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                reqFTP.UseBinary = true;
+                reqFTP.UsePassive = false;
+                reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                Stream ftpStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(ftpStream);
+                string latestFile = string.Empty;
+                DateTime latestFileChangeDateTime = DateTime.MinValue;
+
+                string line = reader.ReadLine();
+                while (line != null)
+                {
+                    string[] tokens = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string fileName = tokens[tokens.Length - 1];
+                    string rawtime = string.Join(" ", tokens, 4, 2);
+                    DateTime modifiedTime = DateTime.ParseExact(rawtime, "MMM dd HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                    //DateTime modifiedTime = DateTime.Parse(tokens[0] + " " + tokens[1]);
+
+                    if (fileName == "." || fileName == "..")
+                    {
+                        if (modifiedTime > latestFileChangeDateTime)
+                        {
+                            latestFileChangeDateTime = modifiedTime;
+                            latestFile = fileName;
+                        }
+                    }
+                    line = reader.ReadLine();
+                }
+                reader.Close();
+                ftpStream.Close();
+                response.Close();
+                LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"GetChangeDateTime:{ftpURI} time:{latestFileChangeDateTime.ToShortDateString()}", CSL.Get(CSLE.A_FTP_GetLatestModificationTime));
+                return latestFileChangeDateTime.ToString();
+            } catch (Exception ex)
+            {
+                LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"GetChangeDateTimeError:{ftpURI} Msg:{ex.Message}", CSL.Get(CSLE.A_FTP_GetLatestModificationTime));
+                throw new Exception("FtpHelper GetChangeDateTime Error --> " + ex.Message);
+            }
         }
     }
 }

@@ -32,5 +32,27 @@ namespace SystemUpdateVersion.Hepler
         public void ClearSection(string Section, string filepath) {
             WriteIni(Section, null, null, filepath);
         }
+
+        /// <summary>
+        /// 读取Ini配置
+        /// </summary>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <returns>Value</returns>
+        public static string ReadINI(string section, string key)
+        {
+            return INIHelper.ReadIni(section, key, "", 255, Environment.CurrentDirectory + @"/Config.ini");
+        }
+
+        /// <summary>
+        /// 保存Ini配置
+        /// </summary>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <param name="value">value</param>
+        public static void WriteINI(string section, string key, string value)
+        {
+            INIHelper.WriteIni(section, key, value, Environment.CurrentDirectory + @"/Config.ini");
+        }
     }
 }

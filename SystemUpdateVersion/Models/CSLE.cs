@@ -870,6 +870,24 @@ namespace SystemUpdateVersion.Models
          @"Chinese:请勿重复启动程序！",
          @"English:Do not repeat the startup procedure!"
         )]
-        A_CreateNewApp
+        A_CreateNewApp,
+
+        [CL(
+         @"Chinese:FTP上传文件",
+         @"English:FTPUploadFile"
+        )]
+        A_FTP_UploadFile,
+
+        [CL(
+         @"Chinese:FTP下载文件",
+         @"English:FTPDownloadFile"
+        )]
+        A_FTP_DownloadFile,
+
+        [CL(
+         @"Chinese:FTP获取最新修改时间",
+         @"English:FTPGetLatestModificationTime"
+        )]
+        A_FTP_GetLatestModificationTime
     }
 }

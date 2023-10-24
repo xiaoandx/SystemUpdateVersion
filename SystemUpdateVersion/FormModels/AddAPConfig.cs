@@ -85,6 +85,7 @@ namespace SystemUpdateVersion.FormModels
                     //LogHepler.WriterLog(OperationUserName, $"{textBIP.Text}:{textBPort.Text}/{textBPath.Text} 【{comboBType.SelectedItem.ToString()}】", "添加APConfig成功！");
                     LogHepler.WriterLog(OperationUserName, $"{textBIP.Text}:{textBPort.Text}/{textBPath.Text} 【{comboBType.SelectedItem.ToString()}】", CSL.Get(CSLE.R_Add_Form_Create));
                     this.Close();
+                    this.Dispose();
                 }
                 else
                 {

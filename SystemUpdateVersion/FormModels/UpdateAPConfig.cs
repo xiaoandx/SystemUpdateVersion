@@ -91,6 +91,7 @@ namespace SystemUpdateVersion.FormModels
                     //LogHepler.WriterLog(OperationUserName, $" {textBIP.Text}:{textBPort.Text}/{textBPath.Text} 【{comboBType.Text}】FTPUserName = '{textUN.Text}', FTPPassWord = '{textPW.Text}', Remarks = '{textRe.Text}'", "修改APConfig成功！");
                     LogHepler.WriterLog(OperationUserName, $" {textBIP.Text}:{textBPort.Text}/{textBPath.Text} 【{comboBType.Text}】FTPUserName = '{textUN.Text}', FTPPassWord = '{textPW.Text}', Remarks = '{textRe.Text}'", CSL.Get(CSLE.R_Update_Form_Update_OK));
                     this.Close();
+                    this.Dispose();
                 }
                 else
                 {
