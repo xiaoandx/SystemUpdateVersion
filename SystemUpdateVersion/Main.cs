@@ -1095,7 +1095,7 @@ namespace SystemUpdateVersion
         {
             FolderBrowserDialog path = new FolderBrowserDialog();
             path.ShowDialog();
-            ShowLogOpenMoin(textBWebApi, path.SelectedPath, VersionType.WebApi, listVWebApi);
+            ShowLogOpenMoinWebApi(textBWebApi, path.SelectedPath, VersionType.WebApi, listVWebApi);
             //textBWebApi.Text = path.SelectedPath;
             WebApiMonitorPath = path.SelectedPath;
             //MonitorLog(listVWebApi,"初始化", "选择监控目录");
@@ -1107,7 +1107,7 @@ namespace SystemUpdateVersion
         {
             FolderBrowserDialog path = new FolderBrowserDialog();
             path.ShowDialog();
-            ShowLogOpenMoin(textBPDA, path.SelectedPath, VersionType.PDA, listVPDA);
+            ShowLogOpenMoinPDA(textBPDA, path.SelectedPath, VersionType.PDA, listVPDA);
             //textBPDA.Text = path.SelectedPath;
             PDAMonitorPath = path.SelectedPath;
             //MonitorLog(listVPDA, "初始化", "选择监控目录");
@@ -1118,7 +1118,7 @@ namespace SystemUpdateVersion
         {
             FolderBrowserDialog path = new FolderBrowserDialog();
             path.ShowDialog();
-            ShowLogOpenMoin(textBCIMPDA, path.SelectedPath, VersionType.CIMPDA, listVCIMPDA);
+            ShowLogOpenMoinCIMPDA(textBCIMPDA, path.SelectedPath, VersionType.CIMPDA, listVCIMPDA);
             //textBCIMPDA.Text = path.SelectedPath;
             CIMPDAMonitorPath = path.SelectedPath;
             //MonitorLog(listVCIMPDA, "初始化", "选择监控目录");
@@ -1129,7 +1129,7 @@ namespace SystemUpdateVersion
         {
             FolderBrowserDialog path = new FolderBrowserDialog();
             path.ShowDialog();
-            ShowLogOpenMoin(textBCamstarPortal, path.SelectedPath, VersionType.CamstarPortal, listVCamstarPortal);
+            ShowLogOpenMoinCamstarPort(textBCamstarPortal, path.SelectedPath, VersionType.CamstarPortal, listVCamstarPortal);
             //textBCamstarPortal.Text = path.SelectedPath;
             CamPortalMonitorPath = path.SelectedPath;
             //MonitorLog(listVCamstarPortal, "初始化", "选择监控目录");
@@ -1576,6 +1576,7 @@ namespace SystemUpdateVersion
             } 
             catch (Exception ex)
             {
+                textBChangeDateTime.AppendText($"{item.IP}" + "\t" + "N/A" + "\r\n");
                 return;
             }
         }
@@ -2025,7 +2026,7 @@ namespace SystemUpdateVersion
             MonitorLog(_ListView, "recycle", code);
         }
 
-        private void ShowLogOpenMoin(TextBox textB, string selectedPath, VersionType Type, ListView _ListView)
+        private void ShowLogOpenMoinWebApi(TextBox textB, string selectedPath, VersionType Type, ListView _ListView)
         {
             textB.Text = selectedPath;
             //MonitorLog(_ListView, "初始化", $"选择监控目录:{selectedPath}");
@@ -2033,6 +2034,33 @@ namespace SystemUpdateVersion
             MonitorLog(_ListView, CSL.Get(CSLE.R_Init), CSL.Get(CSLE.R_M_SelectMoitorFolderPar, selectedPath));
             LogHepler.WriterLog($"{Type.ToString()}{CSL.Get(CSLE.R_M_InitPath)}：{selectedPath}", CSL.Get(CSLE.R_M_SelectMoitorFolder));
             WebApiopenFolderMonitor(selectedPath);
+        }
+        private void ShowLogOpenMoinPDA(TextBox textB, string selectedPath, VersionType Type, ListView _ListView)
+        {
+            textB.Text = selectedPath;
+            //MonitorLog(_ListView, "初始化", $"选择监控目录:{selectedPath}");
+            //LogHepler.WriterLog($"{Type.ToString()}初始化目录：{selectedPath}", "选择监控目录");
+            MonitorLog(_ListView, CSL.Get(CSLE.R_Init), CSL.Get(CSLE.R_M_SelectMoitorFolderPar, selectedPath));
+            LogHepler.WriterLog($"{Type.ToString()}{CSL.Get(CSLE.R_M_InitPath)}：{selectedPath}", CSL.Get(CSLE.R_M_SelectMoitorFolder));
+            PDAopenFolderMonitor(selectedPath);
+        }
+        private void ShowLogOpenMoinCIMPDA(TextBox textB, string selectedPath, VersionType Type, ListView _ListView)
+        {
+            textB.Text = selectedPath;
+            //MonitorLog(_ListView, "初始化", $"选择监控目录:{selectedPath}");
+            //LogHepler.WriterLog($"{Type.ToString()}初始化目录：{selectedPath}", "选择监控目录");
+            MonitorLog(_ListView, CSL.Get(CSLE.R_Init), CSL.Get(CSLE.R_M_SelectMoitorFolderPar, selectedPath));
+            LogHepler.WriterLog($"{Type.ToString()}{CSL.Get(CSLE.R_M_InitPath)}：{selectedPath}", CSL.Get(CSLE.R_M_SelectMoitorFolder));
+            CIMPDAopenFolderMonitor(selectedPath);
+        }
+        private void ShowLogOpenMoinCamstarPort(TextBox textB, string selectedPath, VersionType Type, ListView _ListView)
+        {
+            textB.Text = selectedPath;
+            //MonitorLog(_ListView, "初始化", $"选择监控目录:{selectedPath}");
+            //LogHepler.WriterLog($"{Type.ToString()}初始化目录：{selectedPath}", "选择监控目录");
+            MonitorLog(_ListView, CSL.Get(CSLE.R_Init), CSL.Get(CSLE.R_M_SelectMoitorFolderPar, selectedPath));
+            LogHepler.WriterLog($"{Type.ToString()}{CSL.Get(CSLE.R_M_InitPath)}：{selectedPath}", CSL.Get(CSLE.R_M_SelectMoitorFolder));
+            CamstarPortalopenFolderMonitor(selectedPath);
         }
 
         private void InitMonitorFolder()
@@ -2048,8 +2076,27 @@ namespace SystemUpdateVersion
         {
             if (!"".Equals(textB.Text) && !string.IsNullOrEmpty(textB.Text))
             {
-                ShowLogOpenMoin(textB, textB.Text, Type, listV);
-                WebApiMonitorPath = textB.Text;
+                //ShowLogOpenMoin(textB, textB.Text, Type, listV);
+                switch (Type)
+                {
+                    case VersionType.WebApi:
+                        ShowLogOpenMoinWebApi(textB, textB.Text, Type, listV);
+                        WebApiMonitorPath = textB.Text;
+                        break;
+                    case VersionType.PDA:
+                        ShowLogOpenMoinPDA(textB, textB.Text, Type, listV);
+                        PDAMonitorPath = textB.Text;
+                        break;
+                    case VersionType.CIMPDA:
+                        ShowLogOpenMoinCIMPDA(textB, textB.Text, Type, listV);
+                        CIMPDAMonitorPath = textB.Text;
+                        break;
+                    case VersionType.CamstarPortal:
+                        CamPortalMonitorPath = textB.Text;
+                        ShowLogOpenMoinCamstarPort(textB, textB.Text, Type, listV);
+                        break;
+                }
+                
                 msg[index] = $"{Type.ToString()} {textB.Text} OpenMonitor Successfully!";
             }
         }
