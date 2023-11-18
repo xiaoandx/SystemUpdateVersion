@@ -53,71 +53,79 @@
             // labUpdateIP
             // 
             this.labUpdateIP.AutoSize = true;
-            this.labUpdateIP.Location = new System.Drawing.Point(50, 39);
+            this.labUpdateIP.Location = new System.Drawing.Point(92, 63);
+            this.labUpdateIP.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateIP.Name = "labUpdateIP";
-            this.labUpdateIP.Size = new System.Drawing.Size(36, 13);
+            this.labUpdateIP.Size = new System.Drawing.Size(75, 21);
             this.labUpdateIP.TabIndex = 0;
             this.labUpdateIP.Text = "* IP：";
             // 
             // labUpdatePort
             // 
             this.labUpdatePort.AutoSize = true;
-            this.labUpdatePort.Location = new System.Drawing.Point(41, 137);
+            this.labUpdatePort.Location = new System.Drawing.Point(75, 221);
+            this.labUpdatePort.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdatePort.Name = "labUpdatePort";
-            this.labUpdatePort.Size = new System.Drawing.Size(45, 13);
+            this.labUpdatePort.Size = new System.Drawing.Size(97, 21);
             this.labUpdatePort.TabIndex = 1;
             this.labUpdatePort.Text = "* Port：";
             // 
             // labUpdateType
             // 
             this.labUpdateType.AutoSize = true;
-            this.labUpdateType.Location = new System.Drawing.Point(36, 186);
+            this.labUpdateType.Location = new System.Drawing.Point(66, 300);
+            this.labUpdateType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateType.Name = "labUpdateType";
-            this.labUpdateType.Size = new System.Drawing.Size(50, 13);
+            this.labUpdateType.Size = new System.Drawing.Size(97, 21);
             this.labUpdateType.TabIndex = 2;
             this.labUpdateType.Text = "* Type：";
             // 
             // labBasePath
             // 
             this.labBasePath.AutoSize = true;
-            this.labBasePath.Location = new System.Drawing.Point(14, 235);
+            this.labBasePath.Location = new System.Drawing.Point(26, 380);
+            this.labBasePath.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labBasePath.Name = "labBasePath";
-            this.labBasePath.Size = new System.Drawing.Size(72, 13);
+            this.labBasePath.Size = new System.Drawing.Size(141, 21);
             this.labBasePath.TabIndex = 3;
             this.labBasePath.Text = "* BasePath：";
             // 
             // labUpdateFTPUserName
             // 
             this.labUpdateFTPUserName.AutoSize = true;
-            this.labUpdateFTPUserName.Location = new System.Drawing.Point(10, 333);
+            this.labUpdateFTPUserName.Location = new System.Drawing.Point(18, 538);
+            this.labUpdateFTPUserName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateFTPUserName.Name = "labUpdateFTPUserName";
-            this.labUpdateFTPUserName.Size = new System.Drawing.Size(76, 13);
+            this.labUpdateFTPUserName.Size = new System.Drawing.Size(141, 21);
             this.labUpdateFTPUserName.TabIndex = 4;
             this.labUpdateFTPUserName.Text = "* UserName：";
             // 
             // labUpdateFTPPassWord
             // 
             this.labUpdateFTPPassWord.AutoSize = true;
-            this.labUpdateFTPPassWord.Location = new System.Drawing.Point(11, 382);
+            this.labUpdateFTPPassWord.Location = new System.Drawing.Point(20, 617);
+            this.labUpdateFTPPassWord.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateFTPPassWord.Name = "labUpdateFTPPassWord";
-            this.labUpdateFTPPassWord.Size = new System.Drawing.Size(75, 13);
+            this.labUpdateFTPPassWord.Size = new System.Drawing.Size(141, 21);
             this.labUpdateFTPPassWord.TabIndex = 5;
             this.labUpdateFTPPassWord.Text = "* PassWord：";
             // 
             // labUpdateRemarks
             // 
             this.labUpdateRemarks.AutoSize = true;
-            this.labUpdateRemarks.Location = new System.Drawing.Point(36, 431);
+            this.labUpdateRemarks.Location = new System.Drawing.Point(66, 696);
+            this.labUpdateRemarks.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateRemarks.Name = "labUpdateRemarks";
-            this.labUpdateRemarks.Size = new System.Drawing.Size(50, 13);
+            this.labUpdateRemarks.Size = new System.Drawing.Size(95, 21);
             this.labUpdateRemarks.TabIndex = 6;
             this.labUpdateRemarks.Text = "* 备注：";
             // 
             // butCancel
             // 
-            this.butCancel.Location = new System.Drawing.Point(204, 471);
+            this.butCancel.Location = new System.Drawing.Point(374, 761);
+            this.butCancel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.butCancel.Name = "butCancel";
-            this.butCancel.Size = new System.Drawing.Size(75, 23);
+            this.butCancel.Size = new System.Drawing.Size(138, 37);
             this.butCancel.TabIndex = 7;
             this.butCancel.Text = "Cancel";
             this.butCancel.UseVisualStyleBackColor = true;
@@ -125,9 +133,10 @@
             // 
             // butCreate
             // 
-            this.butCreate.Location = new System.Drawing.Point(113, 471);
+            this.butCreate.Location = new System.Drawing.Point(207, 761);
+            this.butCreate.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.butCreate.Name = "butCreate";
-            this.butCreate.Size = new System.Drawing.Size(75, 23);
+            this.butCreate.Size = new System.Drawing.Size(138, 37);
             this.butCreate.TabIndex = 8;
             this.butCreate.Text = "Save";
             this.butCreate.UseVisualStyleBackColor = true;
@@ -135,17 +144,19 @@
             // 
             // textRe
             // 
-            this.textRe.Location = new System.Drawing.Point(88, 429);
+            this.textRe.Location = new System.Drawing.Point(161, 693);
+            this.textRe.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textRe.Name = "textRe";
-            this.textRe.Size = new System.Drawing.Size(191, 20);
+            this.textRe.Size = new System.Drawing.Size(347, 31);
             this.textRe.TabIndex = 9;
             this.textRe.TextChanged += new System.EventHandler(this.textRe_TextChanged);
             // 
             // textPW
             // 
-            this.textPW.Location = new System.Drawing.Point(88, 380);
+            this.textPW.Location = new System.Drawing.Point(161, 614);
+            this.textPW.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textPW.Name = "textPW";
-            this.textPW.Size = new System.Drawing.Size(191, 20);
+            this.textPW.Size = new System.Drawing.Size(347, 31);
             this.textPW.TabIndex = 10;
             // 
             // comboBType
@@ -158,81 +169,89 @@
             "PDA",
             "CIMPDA",
             "CamstarPortal"});
-            this.comboBType.Location = new System.Drawing.Point(88, 183);
+            this.comboBType.Location = new System.Drawing.Point(161, 296);
+            this.comboBType.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.comboBType.Name = "comboBType";
-            this.comboBType.Size = new System.Drawing.Size(191, 21);
+            this.comboBType.Size = new System.Drawing.Size(347, 29);
             this.comboBType.TabIndex = 11;
             // 
             // textBIP
             // 
             this.textBIP.Enabled = false;
-            this.textBIP.Location = new System.Drawing.Point(88, 35);
+            this.textBIP.Location = new System.Drawing.Point(161, 57);
+            this.textBIP.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBIP.Name = "textBIP";
-            this.textBIP.Size = new System.Drawing.Size(191, 20);
+            this.textBIP.Size = new System.Drawing.Size(347, 31);
             this.textBIP.TabIndex = 12;
             // 
             // textBPort
             // 
             this.textBPort.Enabled = false;
-            this.textBPort.Location = new System.Drawing.Point(88, 134);
+            this.textBPort.Location = new System.Drawing.Point(161, 216);
+            this.textBPort.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBPort.Name = "textBPort";
-            this.textBPort.Size = new System.Drawing.Size(191, 20);
+            this.textBPort.Size = new System.Drawing.Size(347, 31);
             this.textBPort.TabIndex = 13;
             // 
             // textBPath
             // 
-            this.textBPath.Enabled = false;
-            this.textBPath.Location = new System.Drawing.Point(88, 233);
+            this.textBPath.Location = new System.Drawing.Point(161, 376);
+            this.textBPath.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBPath.Name = "textBPath";
-            this.textBPath.Size = new System.Drawing.Size(191, 20);
+            this.textBPath.Size = new System.Drawing.Size(347, 31);
             this.textBPath.TabIndex = 14;
             // 
             // textUN
             // 
-            this.textUN.Location = new System.Drawing.Point(88, 331);
+            this.textUN.Location = new System.Drawing.Point(161, 535);
+            this.textUN.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textUN.Name = "textUN";
-            this.textUN.Size = new System.Drawing.Size(191, 20);
+            this.textUN.Size = new System.Drawing.Size(347, 31);
             this.textUN.TabIndex = 15;
             // 
             // comboBUpdateFactory
             // 
             this.comboBUpdateFactory.Enabled = false;
             this.comboBUpdateFactory.FormattingEnabled = true;
-            this.comboBUpdateFactory.Location = new System.Drawing.Point(88, 84);
+            this.comboBUpdateFactory.Location = new System.Drawing.Point(161, 136);
+            this.comboBUpdateFactory.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.comboBUpdateFactory.Name = "comboBUpdateFactory";
-            this.comboBUpdateFactory.Size = new System.Drawing.Size(191, 21);
+            this.comboBUpdateFactory.Size = new System.Drawing.Size(347, 29);
             this.comboBUpdateFactory.TabIndex = 17;
             // 
             // labUpdateFactory
             // 
             this.labUpdateFactory.AutoSize = true;
-            this.labUpdateFactory.Location = new System.Drawing.Point(25, 88);
+            this.labUpdateFactory.Location = new System.Drawing.Point(46, 142);
+            this.labUpdateFactory.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateFactory.Name = "labUpdateFactory";
-            this.labUpdateFactory.Size = new System.Drawing.Size(61, 13);
+            this.labUpdateFactory.Size = new System.Drawing.Size(130, 21);
             this.labUpdateFactory.TabIndex = 16;
             this.labUpdateFactory.Text = "* Factory：";
             // 
             // textBUpdateFolderPath
             // 
-            this.textBUpdateFolderPath.Location = new System.Drawing.Point(88, 282);
+            this.textBUpdateFolderPath.Location = new System.Drawing.Point(161, 456);
+            this.textBUpdateFolderPath.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBUpdateFolderPath.Name = "textBUpdateFolderPath";
-            this.textBUpdateFolderPath.Size = new System.Drawing.Size(191, 20);
+            this.textBUpdateFolderPath.Size = new System.Drawing.Size(347, 31);
             this.textBUpdateFolderPath.TabIndex = 19;
             // 
             // labUpdateFolderPath
             // 
             this.labUpdateFolderPath.AutoSize = true;
-            this.labUpdateFolderPath.Location = new System.Drawing.Point(9, 284);
+            this.labUpdateFolderPath.Location = new System.Drawing.Point(16, 459);
+            this.labUpdateFolderPath.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labUpdateFolderPath.Name = "labUpdateFolderPath";
-            this.labUpdateFolderPath.Size = new System.Drawing.Size(77, 13);
+            this.labUpdateFolderPath.Size = new System.Drawing.Size(163, 21);
             this.labUpdateFolderPath.TabIndex = 18;
             this.labUpdateFolderPath.Text = "* FolderPath：";
             // 
             // UpdateAPConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 511);
+            this.ClientSize = new System.Drawing.Size(574, 825);
             this.Controls.Add(this.textBUpdateFolderPath);
             this.Controls.Add(this.labUpdateFolderPath);
             this.Controls.Add(this.comboBUpdateFactory);
@@ -253,6 +272,7 @@
             this.Controls.Add(this.labUpdateType);
             this.Controls.Add(this.labUpdatePort);
             this.Controls.Add(this.labUpdateIP);
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.MaximizeBox = false;
             this.Name = "UpdateAPConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -4,6 +4,7 @@ using System.Net;
 using System.Security.Policy;
 using System.Text;
 using SystemUpdateVersion.Models;
+using static System.Net.WebRequestMethods;
 
 namespace SystemUpdateVersion.Hepler
 {
@@ -15,6 +16,7 @@ namespace SystemUpdateVersion.Hepler
         private string ftpUserID;
         private string ftpPassword;
         private string ftpURI;
+        private string TimeOut = INIHelper.ReadINI("FTPConnetConfig","TIME_OUT","5000");
 
         /// <summary>
         /// 连接FTP
@@ -243,6 +245,7 @@ namespace SystemUpdateVersion.Hepler
                 ftp.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 ftp.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                 ftp.UsePassive = false;
+                ftp.Timeout = GetFTPSettingTimeOut();
                 WebResponse response = ftp.GetResponse();
                 StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
 
@@ -288,6 +291,7 @@ namespace SystemUpdateVersion.Hepler
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectory;
                 reqFTP.UsePassive = false;
+                reqFTP.Timeout = reqFTP.Timeout = GetFTPSettingTimeOut();
                 WebResponse response = reqFTP.GetResponse();
                 StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
 
@@ -520,6 +524,7 @@ namespace SystemUpdateVersion.Hepler
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                 reqFTP.UseBinary = true;
                 reqFTP.UsePassive = false;
+                reqFTP.Timeout = GetFTPSettingTimeOut();
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 Stream ftpStream = response.GetResponseStream();
@@ -572,6 +577,7 @@ namespace SystemUpdateVersion.Hepler
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                 reqFTP.UseBinary = true;
                 reqFTP.UsePassive = false;
+                reqFTP.Timeout = GetFTPSettingTimeOut();
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 Stream ftpStream = response.GetResponseStream();
@@ -608,6 +614,19 @@ namespace SystemUpdateVersion.Hepler
                 LogHepler.WriterLog(INIHelper.ReadINI("AccountInformation", "UserName"), $"GetChangeDateTimeError:{ftpURI} Msg:{ex.Message}", CSL.Get(CSLE.A_FTP_GetLatestModificationTime));
                 throw new Exception("FtpHelper GetChangeDateTime Error --> " + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 返回默认设置FTP连接超时时间，未设置超时时间返回默认值5000ms
+        /// </summary>
+        /// <returns></returns>
+        private int GetFTPSettingTimeOut()
+        {
+            if (string.IsNullOrWhiteSpace(TimeOut))
+            {
+                return 5000;
+            }
+            return Convert.ToInt32(TimeOut);
         }
     }
 }

@@ -585,7 +585,7 @@ namespace SystemUpdateVersion
 
             //备份文件目录
             string VersionBackupPathBase = GetVersionBackupPathBase();
-            string DataString = DateTime.Now.ToString("yyyyMMddHH");
+            string DataString = DateTime.Now.ToString("yyyyMMddHHmmss");
             teBBackupDir.Text = DataString;
             SelectAPList = GetSelectAP();
             APConfigModel item = SelectAPList[0];
@@ -612,7 +612,7 @@ namespace SystemUpdateVersion
                             {
                                 _filepath = filePath.Replace("\\", "/");
                                 string[] filepathSpit = _filepath.Split('/');
-                                _LocaFilepath = $@"{VersionBackupPathBase}/{DataString}/{filepathSpit[(filepathSpit.Count() - 1)]}";
+                                _LocaFilepath = $@"{VersionBackupPathBase}/{item.IP}/{DataString}/{filepathSpit[(filepathSpit.Count() - 1)]}";
                                 ftp.DownloadFile(filepathSpit[(filepathSpit.Count() - 1)], _LocaFilepath);
                                 FTPResStatusPush(item.IP, _LocaFilepath, true, FTPType.BackupVersion);
                                 //LogHepler.WriterLog(OperationUserName, $"{item.IP} {_LocaFilepath} {true}", "备份状态");
@@ -637,7 +637,7 @@ namespace SystemUpdateVersion
                             {
                                 _filepath = LocalFilesPathArray[index].Replace("\\", "/");
                                 string[] filepathSpit = _filepath.Split('/');
-                                _LocaFilepath = $@"{VersionBackupPathBase}/{DataString}/{_RemoteFilesPathByAP[index].Replace("\\", "/")}{filepathSpit[(filepathSpit.Count() - 1)]}";
+                                _LocaFilepath = $@"{VersionBackupPathBase}/{item.IP}/{DataString}/{_RemoteFilesPathByAP[index].Replace("\\", "/")}{filepathSpit[(filepathSpit.Count() - 1)]}";
                                 string _RemoctPath = _RemoteFilesPathByAP[index].Replace("\\", "/") + filepathSpit[(filepathSpit.Count() - 1)];
                                 ftp.DownloadFile(_RemoctPath, _LocaFilepath);
                                 FTPResStatusPush(item.IP, _LocaFilepath, true, FTPType.BackupVersion);

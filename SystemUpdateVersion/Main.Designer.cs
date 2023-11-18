@@ -173,7 +173,7 @@ namespace SystemUpdateVersion
             this.tabCMain.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabCMain.Name = "tabCMain";
             this.tabCMain.SelectedIndex = 0;
-            this.tabCMain.Size = new System.Drawing.Size(2527, 853);
+            this.tabCMain.Size = new System.Drawing.Size(2527, 1017);
             this.tabCMain.TabIndex = 0;
             // 
             // tabPAuthentication
@@ -182,7 +182,7 @@ namespace SystemUpdateVersion
             this.tabPAuthentication.Location = new System.Drawing.Point(4, 31);
             this.tabPAuthentication.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabPAuthentication.Name = "tabPAuthentication";
-            this.tabPAuthentication.Size = new System.Drawing.Size(2519, 818);
+            this.tabPAuthentication.Size = new System.Drawing.Size(2519, 982);
             this.tabPAuthentication.TabIndex = 2;
             this.tabPAuthentication.Text = "Operation Authentication";
             this.tabPAuthentication.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@ namespace SystemUpdateVersion
             this.groupBAuthen.Controls.Add(this.butLogin);
             this.groupBAuthen.Controls.Add(this.labPassword);
             this.groupBAuthen.Controls.Add(this.textBPWD);
-            this.groupBAuthen.Location = new System.Drawing.Point(844, 147);
+            this.groupBAuthen.Location = new System.Drawing.Point(844, 198);
             this.groupBAuthen.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.groupBAuthen.Name = "groupBAuthen";
             this.groupBAuthen.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -327,7 +327,7 @@ namespace SystemUpdateVersion
             this.tabPAPConfig.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabPAPConfig.Name = "tabPAPConfig";
             this.tabPAPConfig.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.tabPAPConfig.Size = new System.Drawing.Size(2519, 818);
+            this.tabPAPConfig.Size = new System.Drawing.Size(2519, 982);
             this.tabPAPConfig.TabIndex = 0;
             this.tabPAPConfig.Text = "AP Service Config";
             this.tabPAPConfig.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@ namespace SystemUpdateVersion
             this.gbConfig.Controls.Add(this.butCloseConfig);
             this.gbConfig.Controls.Add(this.butAddConfig);
             this.gbConfig.Controls.Add(this.button1);
-            this.gbConfig.Location = new System.Drawing.Point(11, 688);
+            this.gbConfig.Location = new System.Drawing.Point(11, 846);
             this.gbConfig.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.gbConfig.Name = "gbConfig";
             this.gbConfig.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -398,7 +398,7 @@ namespace SystemUpdateVersion
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(2513, 676);
+            this.listView1.Size = new System.Drawing.Size(2513, 823);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -417,7 +417,7 @@ namespace SystemUpdateVersion
             // chIP
             // 
             this.chIP.Text = "IP";
-            this.chIP.Width = 250;
+            this.chIP.Width = 200;
             // 
             // cHPort
             // 
@@ -427,7 +427,7 @@ namespace SystemUpdateVersion
             // chType
             // 
             this.chType.Text = "Type";
-            this.chType.Width = 150;
+            this.chType.Width = 100;
             // 
             // chPath
             // 
@@ -437,12 +437,12 @@ namespace SystemUpdateVersion
             // chProjectFolderPath
             // 
             this.chProjectFolderPath.Text = "ProjectFolderPath";
-            this.chProjectFolderPath.Width = 350;
+            this.chProjectFolderPath.Width = 300;
             // 
             // chUserName
             // 
             this.chUserName.Text = "FTPUserName";
-            this.chUserName.Width = 300;
+            this.chUserName.Width = 250;
             // 
             // chRemarks
             // 
@@ -498,7 +498,7 @@ namespace SystemUpdateVersion
             this.tabPAPOperation.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabPAPOperation.Name = "tabPAPOperation";
             this.tabPAPOperation.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.tabPAPOperation.Size = new System.Drawing.Size(2519, 818);
+            this.tabPAPOperation.Size = new System.Drawing.Size(2519, 982);
             this.tabPAPOperation.TabIndex = 1;
             this.tabPAPOperation.Text = "AP Service Operation";
             this.tabPAPOperation.UseVisualStyleBackColor = true;
@@ -510,7 +510,7 @@ namespace SystemUpdateVersion
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.groupBox1.Size = new System.Drawing.Size(562, 788);
+            this.groupBox1.Size = new System.Drawing.Size(562, 936);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ChangeDateTime";
@@ -524,7 +524,7 @@ namespace SystemUpdateVersion
             this.textBChangeDateTime.Multiline = true;
             this.textBChangeDateTime.Name = "textBChangeDateTime";
             this.textBChangeDateTime.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBChangeDateTime.Size = new System.Drawing.Size(537, 737);
+            this.textBChangeDateTime.Size = new System.Drawing.Size(537, 864);
             this.textBChangeDateTime.TabIndex = 3;
             // 
             // gBOperation
@@ -547,7 +547,7 @@ namespace SystemUpdateVersion
             this.gBOperation.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.gBOperation.Name = "gBOperation";
             this.gBOperation.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.gBOperation.Size = new System.Drawing.Size(1031, 499);
+            this.gBOperation.Size = new System.Drawing.Size(1031, 647);
             this.gBOperation.TabIndex = 2;
             this.gBOperation.TabStop = false;
             this.gBOperation.Text = "更版操作";
@@ -683,7 +683,7 @@ namespace SystemUpdateVersion
             this.liVFTPRes.Location = new System.Drawing.Point(11, 221);
             this.liVFTPRes.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.liVFTPRes.Name = "liVFTPRes";
-            this.liVFTPRes.Size = new System.Drawing.Size(1008, 266);
+            this.liVFTPRes.Size = new System.Drawing.Size(1008, 393);
             this.liVFTPRes.TabIndex = 2;
             this.liVFTPRes.UseCompatibleStateImageBehavior = false;
             this.liVFTPRes.View = System.Windows.Forms.View.Details;
@@ -742,7 +742,7 @@ namespace SystemUpdateVersion
             this.gBSelectAP.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.gBSelectAP.Name = "gBSelectAP";
             this.gBSelectAP.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.gBSelectAP.Size = new System.Drawing.Size(861, 499);
+            this.gBSelectAP.Size = new System.Drawing.Size(861, 649);
             this.gBSelectAP.TabIndex = 1;
             this.gBSelectAP.TabStop = false;
             this.gBSelectAP.Text = "选择AP";
@@ -814,7 +814,7 @@ namespace SystemUpdateVersion
             this.cLBAPS.Location = new System.Drawing.Point(537, 108);
             this.cLBAPS.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.cLBAPS.Name = "cLBAPS";
-            this.cLBAPS.Size = new System.Drawing.Size(312, 368);
+            this.cLBAPS.Size = new System.Drawing.Size(312, 508);
             this.cLBAPS.TabIndex = 3;
             this.cLBAPS.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cLBAPS_ItemCheck);
             // 
@@ -970,7 +970,7 @@ namespace SystemUpdateVersion
             this.tabPMonitor.Location = new System.Drawing.Point(4, 31);
             this.tabPMonitor.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabPMonitor.Name = "tabPMonitor";
-            this.tabPMonitor.Size = new System.Drawing.Size(2519, 818);
+            this.tabPMonitor.Size = new System.Drawing.Size(2519, 982);
             this.tabPMonitor.TabIndex = 3;
             this.tabPMonitor.Text = "AP Version Monitor";
             this.tabPMonitor.UseVisualStyleBackColor = true;
@@ -1290,7 +1290,7 @@ namespace SystemUpdateVersion
             // 
             this.labSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSchedule.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labSchedule.Location = new System.Drawing.Point(2020, 857);
+            this.labSchedule.Location = new System.Drawing.Point(2020, 1026);
             this.labSchedule.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labSchedule.Name = "labSchedule";
             this.labSchedule.Size = new System.Drawing.Size(183, 21);
@@ -1300,7 +1300,7 @@ namespace SystemUpdateVersion
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(2210, 861);
+            this.progressBar.Location = new System.Drawing.Point(2210, 1030);
             this.progressBar.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(262, 16);
@@ -1311,7 +1311,7 @@ namespace SystemUpdateVersion
             this.labNum.AutoSize = true;
             this.labNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labNum.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labNum.Location = new System.Drawing.Point(2478, 858);
+            this.labNum.Location = new System.Drawing.Point(2478, 1027);
             this.labNum.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labNum.Name = "labNum";
             this.labNum.Size = new System.Drawing.Size(33, 20);
@@ -1323,7 +1323,7 @@ namespace SystemUpdateVersion
             this.labRole.AutoSize = true;
             this.labRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labRole.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labRole.Location = new System.Drawing.Point(37, 855);
+            this.labRole.Location = new System.Drawing.Point(37, 1024);
             this.labRole.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labRole.Name = "labRole";
             this.labRole.Size = new System.Drawing.Size(48, 20);
@@ -1335,7 +1335,7 @@ namespace SystemUpdateVersion
             this.labWorkNumber.AutoSize = true;
             this.labWorkNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labWorkNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labWorkNumber.Location = new System.Drawing.Point(152, 855);
+            this.labWorkNumber.Location = new System.Drawing.Point(152, 1024);
             this.labWorkNumber.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labWorkNumber.Name = "labWorkNumber";
             this.labWorkNumber.Size = new System.Drawing.Size(0, 20);
@@ -1345,7 +1345,7 @@ namespace SystemUpdateVersion
             // 
             this.labFactoryTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labFactoryTag.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labFactoryTag.Location = new System.Drawing.Point(297, 855);
+            this.labFactoryTag.Location = new System.Drawing.Point(297, 1024);
             this.labFactoryTag.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labFactoryTag.Name = "labFactoryTag";
             this.labFactoryTag.Size = new System.Drawing.Size(128, 21);
@@ -1358,7 +1358,7 @@ namespace SystemUpdateVersion
             this.labFactoryValue.AutoSize = true;
             this.labFactoryValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labFactoryValue.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labFactoryValue.Location = new System.Drawing.Point(433, 856);
+            this.labFactoryValue.Location = new System.Drawing.Point(433, 1025);
             this.labFactoryValue.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labFactoryValue.Name = "labFactoryValue";
             this.labFactoryValue.Size = new System.Drawing.Size(0, 20);
@@ -1375,7 +1375,7 @@ namespace SystemUpdateVersion
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2539, 883);
+            this.ClientSize = new System.Drawing.Size(2539, 1057);
             this.Controls.Add(this.labFactoryValue);
             this.Controls.Add(this.labFactoryTag);
             this.Controls.Add(this.labWorkNumber);

@@ -45,6 +45,17 @@ namespace SystemUpdateVersion.Hepler
         }
 
         /// <summary>
+        /// 读取Ini配置,设置默认值
+        /// </summary>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <returns>Value</returns>
+        public static string ReadINI(string section, string key, string defualtValue)
+        {
+            return INIHelper.ReadIni(section, key, defualtValue, 255, Environment.CurrentDirectory + @" / Config.ini");
+        }
+
+        /// <summary>
         /// 保存Ini配置
         /// </summary>
         /// <param name="section">section</param>

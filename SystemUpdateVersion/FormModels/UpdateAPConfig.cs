@@ -83,7 +83,7 @@ namespace SystemUpdateVersion.FormModels
             string InsertSQL = string.Empty;
             try
             {
-                InsertSQL = $@"UPDATE APConfigDateils ap SET ap.FTPUserName = '{textUN.Text}', ap.FTPPassWord = '{textPW.Text}', ap.Remarks = '{textRe.Text}', ap.ProjectFolderPath = '{textBUpdateFolderPath.Text}' where ap.Factory = '{Factory}' and ap.IP = '{textBIP.Text}' and ap.Port = {textBPort.Text} and ap.Type = '{comboBType.Text}' and ap.Path = '{textBPath.Text}'";
+                InsertSQL = $@"UPDATE APConfigDateils ap SET ap.FTPUserName = '{textUN.Text}', ap.FTPPassWord = '{textPW.Text}', ap.Remarks = '{textRe.Text}', ap.ProjectFolderPath = '{textBUpdateFolderPath.Text}', ap.Path = '{textBPath.Text}' where ap.Factory = '{Factory}' and ap.IP = '{textBIP.Text}' and ap.Port = {textBPort.Text} and ap.Type = '{comboBType.Text}'";
                 int res = MdbHepler.Update(InsertSQL);
                 if (res == 1)
                 {
